@@ -35,7 +35,7 @@ namespace SkillMagicSystem
             {
                 //add passive check
                 passiveAbilities.Add(skill.AddPassiveAbility());
-                activeAbillities.Add(skill.AddActiveAbility());d
+                activeAbillities.Add(skill.AddActiveAbility());
             }
             SetupGrid();
             modal.DisplayGrid(grid );
