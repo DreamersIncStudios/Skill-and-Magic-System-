@@ -21,7 +21,6 @@ namespace SkillMagicSystem
         public GridGeneric<MagicGridObject> grid;
         private int width, height;
         private float cellsize;
-        public GridModalWindow modal;
         // Start is called before the first frame update
         void Start()
         {
@@ -38,7 +37,6 @@ namespace SkillMagicSystem
                 activeAbillities.Add(skill.AddActiveAbility());
             }
             SetupGrid();
-            modal.DisplayGrid(grid );
         }
         public void SetupGrid(int width = 15, int height = 10, float cellsize = 5f)
         {
