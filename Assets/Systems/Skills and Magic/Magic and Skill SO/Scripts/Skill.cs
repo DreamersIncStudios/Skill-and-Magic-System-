@@ -6,6 +6,7 @@ using UnityEngine.Events;
 using SkillMagicSystem.AbilityEffects;
 using Random = UnityEngine.Random;
 using Unity.Mathematics;
+using Stats;
 
 namespace SkillMagicSystem
 {
@@ -13,17 +14,21 @@ namespace SkillMagicSystem
     public class Skill : BaseAbility
     {
 
-        public float chance { get; private set; }
-        public List<EffectsSO> effects;
+        public int chance { get; private set; }
+        public int Amount { get; private set; }
+
+        public List<BaseEffect> Effects;
 
         public void AddModStat() { }
         public void RemoveModStat() { }
 
-        public Action OnHit;
-        public Action OnGotHit;
-        public Action OnKillEnemy;
-        public Action OnPlayerTeamDeath;
-        public Action tempAction;
+        public void Activate(BaseCharacter baseCharacter)
+        {
+            foreach (BaseEffect effect in Effects)
+            {
+                effect.Activate(baseCharacter, Amount, chance);
+            }
+        }
 
         public int2 GridSize;
         public Shape GridShape;
@@ -32,56 +37,8 @@ namespace SkillMagicSystem
         public Dir dir;
 
 
-        public PassiveAbility AddPassiveAbility()
-        {
-            foreach (EffectsSO effect in effects)
-            {
-                tempAction = delegate {
-                    int rndNum = Random.Range(0, 100);
-                    if (chance > +rndNum)
-                    {
-                        Debug.Log("DO Stuff");
-                    }
-                };
-                switch (effect.trigger)
-                {
-                    case Trigger.OnHit:
-                        OnHit += tempAction;
-                        break;
-                    case Trigger.OnGetHit:
-                        OnGotHit += tempAction;
-                        break;
-                    case Trigger.OnKill:
-                        OnKillEnemy += tempAction;
-                        break;
-                    case Trigger.OnPlayerDeath:
-                        OnPlayerTeamDeath += tempAction;
-                        break;
-                }
-            }
-            var temp = new PassiveAbility(Name, OnHit,OnGotHit, OnKillEnemy, OnPlayerTeamDeath);
-            return temp;
-        }
-
-        Action activeEffects;
-        public ActiveAbillity AddActiveAbility()
-        {
-
-            foreach (EffectsSO effect in effects)
-            {
-                if (effect.trigger == Trigger.OnCommand)
-                {
-                    switch (effect.ActionEffect)
-                    {
-                        case Effects.Heal:
-                            activeEffects += effect.Heal;
-                            break;
-                    }
-                }
-            }
-            var temp = new ActiveAbillity(Name, activeEffects, .9f);
-            return temp;
-        }
+       
+        
         public void WriteToTextFile()
         {
             throw new System.NotImplementedException();

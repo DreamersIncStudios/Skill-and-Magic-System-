@@ -52,5 +52,5 @@ namespace SkillMagicSystem
         public float chance { get; private set; }
 
     }
-    public enum Trigger { OnCommand,OnHit,OnGetHit, OnKill, OnPlayerDeath, OnTimer, OnEquip}
+    public enum TriggerTypes { OnCommand,OnHit,OnGetHit, OnKill, OnPlayerDeath, OnTimer, OnEquip}
 }
