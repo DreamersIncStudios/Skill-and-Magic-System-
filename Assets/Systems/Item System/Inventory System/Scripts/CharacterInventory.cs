@@ -35,6 +35,7 @@ namespace Dreamers.InventorySystem
             Equipment.LoadEquipment(PC,Save);
 
             Gold = 2000; //TODO remove in final 
+            Inventory.Magics[0].Activate(PC);
 
         }
       

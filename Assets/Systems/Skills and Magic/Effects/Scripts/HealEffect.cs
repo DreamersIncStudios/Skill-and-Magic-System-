@@ -3,26 +3,35 @@ using DreamersInc.DamageSystem.Interfaces;
 using Stats;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
+
 namespace SkillMagicSystem.AbilityEffects
 {
-
-    [CreateAssetMenu(fileName = "Healing Effect", menuName = "Magic and Skills/Heal Effect")]
-
-    public class HealEffect : ScriptableObject, iEffect, IOnHitEffect, IOnKillEffect, IOnCommand, IOnTimeEffect, IOnPlayerDeath
-    {
+    public abstract class BaseEffect : ScriptableObject, iEffect {
         public TriggerTypes GetTrigger { get { return trigger; } }
-        [SerializeField]TriggerTypes trigger;
+        [SerializeField] TriggerTypes trigger;
         public Targets GetTarget { get { return target; } }
         [SerializeField] Targets target;
-        
         public float Duration { get { return duration; } }
         [SerializeField] float duration = 3;
         public GameObject EffectVFX { get { return effectVFX; } }
         [SerializeField] GameObject effectVFX;
+        public virtual void Activate(BaseCharacter baseCharacter, int amount =0 , int chance=100) { }
+    }
+
+
+
+    [CreateAssetMenu(fileName = "Healing Effect", menuName = "Magic and Skills/Heal Effect")]
+
+    public class HealEffect : BaseEffect, IOnHitEffect, IOnKillEffect, IOnCommand, IOnTimeEffect, IOnPlayerDeath
+    {
+
         [SerializeField] float range;
         [SerializeField] float intervalTime;
 
-        public void Activate(BaseCharacter baseCharacter,int amount = 0, int chance =100) {
+        public override void Activate(BaseCharacter baseCharacter,int amount = 0, int chance =100) {
+            base.Activate(baseCharacter,amount,chance);
+            Debug.Log("Called at SO");
             switch (GetTrigger) {
                 case TriggerTypes.OnCommand:
                     OnCommand(baseCharacter,amount);
@@ -100,6 +109,16 @@ namespace SkillMagicSystem.AbilityEffects
                 case Targets.TeamMember:
 
                     baseCharacter.TakeDamage(Amount, TypeOfDamage.Recovery, Element.Holy);
+
+                    if (EffectVFX != null)
+                    {
+                        //Todo add position offset for VFX
+                        var spawned = Instantiate(EffectVFX, baseCharacter.transform.position, Quaternion.identity).GetComponent<VisualEffect>(); // figure out how to postion 
+                        spawned.transform.SetParent(baseCharacter.transform, false);
+                        spawned.Play();
+                        Destroy(spawned.gameObject, Duration);
+                    }
+                 
                     break;
                 case Targets.AOE:
                     var Cols = Physics.OverlapSphere(baseCharacter.gameObject.transform.position, range);

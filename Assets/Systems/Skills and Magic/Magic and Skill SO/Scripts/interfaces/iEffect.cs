@@ -45,6 +45,7 @@ namespace SkillMagicSystem.AbilityEffects
         bool ActivateOnChance(int chance);
     }
 
+    public enum Targets { Self, TeamMember, Target, AOE, Direction }
 
 }
 
