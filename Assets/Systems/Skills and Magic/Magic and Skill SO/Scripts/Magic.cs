@@ -34,22 +34,22 @@ namespace SkillMagicSystem
             foreach (EffectsSO effect in effects) {
                 tempAction = delegate {
                     int rndNum= Random.Range(0, 100);
-                    if (chance>+ rndNum) {
+                    if (chance>= rndNum) {
                         Debug.Log("DO Stuff");
                     }
                 };
                 switch (effect.trigger)
                 {
-                    case Trigger.OnHit:
+                    case TriggerTypes.OnHit:
                         OnHit += tempAction;
                         break;
-                    case Trigger.OnGetHit:
+                    case TriggerTypes.OnGetHit:
                         OnGotHit += tempAction;
                         break;
-                    case Trigger.OnKill:
+                    case TriggerTypes.OnKill:
                         OnKillEnemy += tempAction;
                         break;
-                    case Trigger.OnPlayerDeath:
+                    case TriggerTypes.OnPlayerDeath:
                         OnPlayerTeamDeath += tempAction;
                         break;
                 }
@@ -65,7 +65,7 @@ namespace SkillMagicSystem
 
             foreach (EffectsSO effect in effects)
             {
-                if (effect.trigger == Trigger.OnCommand)
+                if (effect.trigger == TriggerTypes.OnCommand)
                 {
                     switch (effect.ActionEffect)
                     {

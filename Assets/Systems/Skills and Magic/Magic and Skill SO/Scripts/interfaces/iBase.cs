@@ -11,7 +11,7 @@ namespace SkillMagicSystem
         public Level Level { get; }
         public int ReqdLevel { get; }
         public bool CanAdd(int level); //Todo Add more check besides level 
-
+        public  void Activate();
 
 
 
@@ -40,6 +40,7 @@ namespace SkillMagicSystem
             return ReqdLevel <= characterlevel; 
                 
                 }
+        public virtual void Activate() { }
     }
 
 

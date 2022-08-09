@@ -1,3 +1,4 @@
+using Stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,8 @@ namespace SkillMagicSystem.AbilityEffects
 
     public class EffectsSO: ScriptableObject
     {
-        public Trigger trigger;
-        public Target target;
+        public TriggerTypes trigger;
+        public Targets target;
         public Effects ActionEffect;
         public GameObject effectVFX;
         public int Amount;
@@ -18,7 +19,7 @@ namespace SkillMagicSystem.AbilityEffects
         public void Heal() {
             switch (target) 
             {
-                case Target.Self:
+                case Targets.Self:
             if (effectVFX != null)
             {
                 var spawned = Instantiate(effectVFX).GetComponent<VisualEffect>(); // figure out how to postion 
@@ -32,5 +33,5 @@ namespace SkillMagicSystem.AbilityEffects
     }
 
     public enum Effects { Heal, Drain, Damage, Modify, Steal,  }
-    public enum Target { Self, TeamMember, Target, AOE, Direction}
+    public enum Targets { Self, TeamMember, Target, AOE, Direction}
 }
