@@ -9,6 +9,8 @@ namespace SkillMagicSystem
         string Name { get; }
         string Description { get; }
         public Level Level { get; }
+        public int ReqdLevel { get; }
+        public bool CanAdd(int level); //Todo Add more check besides level 
 
 
 
@@ -30,7 +32,14 @@ namespace SkillMagicSystem
         [SerializeField] string description;
         public Level Level { get { return level; } private set { level = value; } }
         [SerializeField] Level level;
+        public int ReqdLevel { get { return reqdLevel; } private set { reqdLevel = value; } }
+        [SerializeField] int reqdLevel;
         public bool Magic;
+
+        public bool CanAdd(int characterlevel) {
+            return ReqdLevel <= characterlevel; 
+                
+                }
     }
 
 

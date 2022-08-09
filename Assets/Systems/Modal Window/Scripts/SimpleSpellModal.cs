@@ -71,14 +71,21 @@ namespace SkillMagicSystem
                 Button item = Instantiate(ItemButton, InInventoryContentArea.transform);
                 item.GetComponentInChildren<TextMeshProUGUI>().text = basic.Name;
                 item.onClick.AddListener(() => {
-                    Debug.Log($"Add {basic.Name} to player ability list");
-                    if (basic.Magic)
-                        Inventory.Magics.Remove((Magic)basic);
-                    else
-                        Inventory.Skills.Remove((Skill)basic);
-                    manager.AddedAbilities.Add(basic);
-                    Destroy(item.gameObject);
-                    RefreshEquipped(player, Inventory);
+                    if (basic.CanAdd(player.Level))
+                    {
+                        Debug.Log($"Add {basic.Name} to player ability list");
+                        if (basic.Magic)
+                            Inventory.Magics.Remove((Magic)basic);
+                        else
+                            Inventory.Skills.Remove((Skill)basic);
+                        manager.AddedAbilities.Add(basic);
+                        Destroy(item.gameObject);
+                        RefreshEquipped(player, Inventory);
+                    }
+                    else {
+                        Debug.Log($"Unable to equipped {basic.Name} to player ability list. Player doesn't meet reqd level {basic.ReqdLevel}" +
+                            $" This is be implemented as Modal Window in future");
+                    }
                 });
             }
 

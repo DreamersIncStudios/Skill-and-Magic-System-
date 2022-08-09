@@ -15,4 +15,11 @@ MonoBehaviour:
   _name: Test Skill
   description: 'Skill for Testing '
   level: 0
+  reqdLevel: 0
+  Magic: 0
   effects: []
+  GridSize:
+    x: 0
+    y: 0
+  GridShape: 0
+  dir: 0

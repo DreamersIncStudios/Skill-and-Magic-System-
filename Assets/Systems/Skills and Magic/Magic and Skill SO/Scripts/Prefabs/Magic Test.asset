@@ -15,5 +15,12 @@ MonoBehaviour:
   _name: 'Magic Test '
   description: 'Magic for Testing '
   level: 0
+  reqdLevel: 0
+  Magic: 1
   effects:
   - {fileID: 11400000, guid: 5b59fb120e7375042a6652589cb0454d, type: 2}
+  GridSize:
+    x: 0
+    y: 0
+  GridShape: 0
+  dir: 0
