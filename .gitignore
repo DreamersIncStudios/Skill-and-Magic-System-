@@ -58,3 +58,6 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/Assets/Systems/Item System/Item Models and Icons/Sprite Icons
+/Assets/Systems/Item System/Item Models and Icons
+/Assets/Plugins

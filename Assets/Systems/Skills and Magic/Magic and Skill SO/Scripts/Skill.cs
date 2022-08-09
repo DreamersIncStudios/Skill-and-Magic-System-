@@ -10,14 +10,8 @@ using Unity.Mathematics;
 namespace SkillMagicSystem
 {
     [CreateAssetMenu(fileName = "Skill", menuName ="Magic and Skills/Skills")]
-    public class Skill : ScriptableObject, iBase
+    public class Skill : BaseAbility
     {
-        public string Name { get { return name; } private set { name = value; } }
-        [SerializeField] string _name;
-        public string Description { get { return description; } private set { description = value; } }
-        [SerializeField] string description;
-        public Level Level { get { return level; } private set { level = value; } }
-        [SerializeField] Level level;
 
         public float chance { get; private set; }
         public List<EffectsSO> effects;
