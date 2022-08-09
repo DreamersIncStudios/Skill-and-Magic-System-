@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4876162283798434578
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4876162283798434589}
+  - component: {fileID: 4876162283798434588}
+  - component: {fileID: 4876162283798434579}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4876162283798434589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876162283798434578}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4876162283798434588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876162283798434578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e02f2b4d39f2cc45a96d9b39cd52cfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModalMenuPrefab: {fileID: 6942605442429792666, guid: 4a4c9907c75aec644afec1069d370844, type: 3}
+  ModalWindowPrefab: {fileID: 7347563684732277479, guid: 8fd977f7c7a3f94479fc0cfb256c7c44, type: 3}
+  ModalSelecetionPrefab: {fileID: 7138471011176045117, guid: 50d7d172cdeb4ef45ba7813fe3a1fe00, type: 3}
+  StatsWindow: {fileID: 6156323984239388499, guid: 8b1fdaf5814953c4cb7a356f4b22d464, type: 3}
+  InventoryWindow: {fileID: 6698811826374894524, guid: ce98a503923e2ee408a52e3cc9ea8e94, type: 3}
+  optionsWindow: {fileID: 266078247686069374, guid: b2f22b2fd8857704ba91147afb8e0d26, type: 3}
+--- !u!114 &4876162283798434579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876162283798434578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe11e4f5f0481294a937b4296668d15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUI: {fileID: 0}
+  getCanvas: {fileID: 0}
+  menuItems:
+  - text: Options
+    actionToTake:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4876162283798434579}
+          m_TargetAssemblyTypeName: Dreamers.InventorySystem.UISystem.DisplayCharacterUI,
+            Assembly-CSharp
+          m_MethodName: OpenOptions
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - text: 'Quit Game '
+    actionToTake:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: LevelChanger, GameMenus
+          m_MethodName: FadeOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: LevelChanger, GameMenus
+          m_MethodName: CloseGame
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  character: {fileID: 0}

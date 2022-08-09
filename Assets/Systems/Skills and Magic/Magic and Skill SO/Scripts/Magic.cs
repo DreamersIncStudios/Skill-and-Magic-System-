@@ -10,14 +10,9 @@ namespace SkillMagicSystem
 {
 
     [CreateAssetMenu(fileName = "Magic", menuName = "Magic and Skills/Magic")]
-    public class Magic : ScriptableObject, iBase
+    public class Magic : BaseAbility
     {
-        public string Name { get { return name; } private set { name = value; } }
-        [SerializeField] string _name;
-        public string Description { get { return description; } private set { description = value; } }
-        [SerializeField] string description;
-        public Level Level { get { return level; } private set { level = value; } }
-        [SerializeField] Level level;
+        
         public float chance { get; private set; }
         public List<EffectsSO> effects;
 

@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 25
   m_Viewport: {fileID: 6579312860279891855}
   m_HorizontalScrollbar: {fileID: 6579312861646067711}
   m_VerticalScrollbar: {fileID: 6579312860379297723}
@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 25
   m_Viewport: {fileID: 6579312861736261210}
   m_HorizontalScrollbar: {fileID: 6579312862097353833}
   m_VerticalScrollbar: {fileID: 6579312861331868221}
@@ -1828,6 +1828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6579312862126239165}
+  - component: {fileID: 413967067}
   m_Layer: 5
   m_Name: Spell Skill Display
   m_TagString: Untagged
@@ -1856,6 +1857,22 @@ RectTransform:
   m_AnchoredPosition: {x: 330, y: 0}
   m_SizeDelta: {x: -660, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &413967067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6579312862126239166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a6157bd168bf7b48bfba3ff2705af88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EquippedContentArea: {fileID: 6579312862166226346}
+  InInventoryContentArea: {fileID: 6579312862027572642}
+  ItemButton: {fileID: 2028704810551203820, guid: 2392222ec14eb074a8615831634cdb09,
+    type: 3}
 --- !u!1 &6579312862166226346
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,6 @@ namespace Dreamers.InventorySystem.Generic
     public class Shop
     {
         private string shopName;
-        private StoreTypes storeType;
         private List<IPurchasable> itemsToSell;
         private List<IPurchasable> itemsToBuyback;
         [Range(.5f, 1.0f)]
@@ -22,12 +21,11 @@ namespace Dreamers.InventorySystem.Generic
         readonly UIManager Manager;
         public bool Displayed { get { return (bool)MenuPanelParent; } }
         bool Buying = true;
-        public Shop(string name = "",StoreTypes store=StoreTypes.General, List<IPurchasable> itemToSell= default, uint SeedCapital = 1500)
+        public Shop(string name = "", List<IPurchasable> itemToSell= default, uint SeedCapital = 1500)
         {
             Manager = UIManager.instance;
 
             this.shopName = name;
-            storeType = store;
             //  this.storeWallet = SeedCapital;
             itemsToSell = new List<IPurchasable>();
             itemsToBuyback = new List<IPurchasable>();
@@ -204,13 +202,7 @@ namespace Dreamers.InventorySystem.Generic
                 UnityEngine.Object.Destroy(ItemPanel);
             ItemPanel = Manager.GetPanel(Parent.transform, new Vector2(1920, 0), new Vector2(0, 0));
       
-            if (storeType != StoreTypes.Mission)
-            {
-                ItemStore(Filter, playerInventory);
-            }
-            else {
-                MissionStore(playerInventory);
-            }
+      
             return ItemPanel;
         }
 

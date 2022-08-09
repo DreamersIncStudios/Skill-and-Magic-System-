@@ -65,6 +65,7 @@ namespace Dreamers.Global
         public GameObject ModalWindowPrefab;
         public GameObject ModalSelecetionPrefab;
         public GameObject StatsWindow;
+        public GameObject MagicSkillWindow;
         public GameObject InventoryWindow;
         public GameObject optionsWindow;
 
