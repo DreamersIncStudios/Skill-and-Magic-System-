@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trigger: 0
   target: 0
-  duration: 0
-  effectVFX: {fileID: 0}
+  duration: 4
+  effectVFX: {fileID: 7019298487948308014, guid: f5710051d678cb640995af006375cf12,
+    type: 3}
   range: 0
   intervalTime: 0

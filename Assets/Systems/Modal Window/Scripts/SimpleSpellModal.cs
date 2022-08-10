@@ -16,7 +16,7 @@ namespace SkillMagicSystem
         public GameObject InInventoryContentArea;
         public Button ItemButton;
     
-        public void DisplaySpellsSkills( BaseCharacter player , InventoryBase Inventory)
+        public void DisplaySpellsSkills( BaseCharacter player , SkillSystemBase Inventory)
         {
          
             RefreshEquipped(player, Inventory);
@@ -24,44 +24,42 @@ namespace SkillMagicSystem
 
         }
 
-        public void RefreshEquipped( BaseCharacter player, InventoryBase Inventory) {
+        public void RefreshEquipped( BaseCharacter player, SkillSystemBase Inventory) {
             foreach (Transform child in EquippedContentArea.transform)
             {
                 Destroy(child.gameObject);
             }
-            AbilityManager manager = player.GetComponent<AbilityManager>();
-            List<BaseAbility> Equipped = manager.AddedAbilities;
-            foreach (BaseAbility basic in Equipped)
+            foreach (BaseAbility basic in Inventory.EquipSkillMagic)
             {
                 Button item = Instantiate(ItemButton, EquippedContentArea.transform);
                 item.GetComponentInChildren<TextMeshProUGUI>().text = basic.Name;
                 item.onClick.AddListener(() => {
                     Debug.Log($"Remove {basic.Name} to player ability list");
-                    manager.AddedAbilities.Remove(basic);
+                    Inventory.EquipSkillMagic.Remove(basic);
                     if (basic.Magic)
-                        Inventory.Magics.Add((Magic)basic);
+                        Inventory.MagicInventory.Add((Magic)basic);
                     else
-                        Inventory.Skills.Add((Skill)basic);
+                        Inventory.SkillInventory.Add((Skill)basic);
                     Destroy(item.gameObject);
                     RefreshInInventory(player, Inventory);
                 });
             }
         }
-        public void RefreshInInventory(BaseCharacter player, InventoryBase Inventory)
+        public void RefreshInInventory(BaseCharacter player, SkillSystemBase Inventory)
         {
             foreach (Transform child in InInventoryContentArea.transform)
             {
                 Destroy(child.gameObject);
             }
 
-            AbilityManager manager = player.GetComponent<AbilityManager>();
+        
             List<BaseAbility> InInventory = new List<BaseAbility>();
 
-            foreach (BaseAbility bases in Inventory.Magics)
+            foreach (BaseAbility bases in Inventory.MagicInventory)
             {
                 InInventory.Add(bases);
             }
-            foreach (BaseAbility bases in Inventory.Skills)
+            foreach (BaseAbility bases in Inventory.SkillInventory)
             {
                 InInventory.Add(bases);
             }
@@ -75,10 +73,10 @@ namespace SkillMagicSystem
                     {
                         Debug.Log($"Add {basic.Name} to player ability list");
                         if (basic.Magic)
-                            Inventory.Magics.Remove((Magic)basic);
+                            Inventory.MagicInventory.Remove((Magic)basic);
                         else
-                            Inventory.Skills.Remove((Skill)basic);
-                        manager.AddedAbilities.Add(basic);
+                            Inventory.SkillInventory.Remove((Skill)basic);
+                        Inventory.EquipSkillMagic.Add(basic);
                         Destroy(item.gameObject);
                         RefreshEquipped(player, Inventory);
                     }

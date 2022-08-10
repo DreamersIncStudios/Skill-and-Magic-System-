@@ -1,3 +1,4 @@
+using Stats;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ namespace SkillMagicSystem
         public Level Level { get; }
         public int ReqdLevel { get; }
         public bool CanAdd(int level); //Todo Add more check besides level 
-        public  void Activate();
+        public  void Activate(BaseCharacter baseCharacter);
 
 
 
@@ -35,12 +36,12 @@ namespace SkillMagicSystem
         public int ReqdLevel { get { return reqdLevel; } private set { reqdLevel = value; } }
         [SerializeField] int reqdLevel;
         public bool Magic;
-
+        public TriggerTypes Trigger;
         public bool CanAdd(int characterlevel) {
             return ReqdLevel <= characterlevel; 
                 
                 }
-        public virtual void Activate() { }
+        public virtual void Activate(BaseCharacter baseCharacter) { }
     }
 
 

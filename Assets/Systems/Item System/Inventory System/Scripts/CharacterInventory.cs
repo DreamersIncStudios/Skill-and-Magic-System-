@@ -14,6 +14,7 @@ namespace Dreamers.InventorySystem
         private Animator anim => this.GetComponent<Animator>();
         public InventoryBase Inventory;
         public EquipmentBase Equipment;
+        public SkillSystemBase skillSystem;
         public MissionHub QuestLog;
         public Entity self { get; private set; }
         public int Gold { get; private set; }
@@ -35,7 +36,6 @@ namespace Dreamers.InventorySystem
             Equipment.LoadEquipment(PC,Save);
 
             Gold = 2000; //TODO remove in final 
-            Inventory.Magics[0].Activate(PC);
 
         }
       

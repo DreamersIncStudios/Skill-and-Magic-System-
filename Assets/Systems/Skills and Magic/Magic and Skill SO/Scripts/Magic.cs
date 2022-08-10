@@ -35,7 +35,8 @@ namespace SkillMagicSystem
              effect.Activate(baseCharacter,Amount,chance);
             }
         }
-
+        public void Equip(BaseCharacter baseCharacter) { }
+        public void Unequip(BaseCharacter baseCharacter) { }
         public void AddToGrid() {  //Todo Add Later
         
         }

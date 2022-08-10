@@ -16,10 +16,12 @@ namespace Dreamers.InventorySystem.UISystem
         [SerializeField] GameObject baseUI;
         bool OpenCloseMenu => Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.JoystickButton7);
         bool OpenCloseMagic => Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.JoystickButton9);
+        bool Command => Input.GetKeyUp(KeyCode.M) || Input.GetKeyUp(KeyCode.JoystickButton9);
 
         [SerializeField] Canvas getCanvas;
         public bool Displayed { get; private set; }
         InventoryBase Inventory => character.GetComponent<CharacterInventory>().Inventory;
+        SkillSystemBase SkillInventory => character.GetComponent<CharacterInventory>().skillSystem;
         [SerializeField] List<MenuButtons> menuItems;
         private void Awake()
         {
@@ -63,7 +65,22 @@ namespace Dreamers.InventorySystem.UISystem
 
                 }
             }
+            if (Command)
+            {
+                if (!character)
+                    character = FindObjectOfType<PlayerCharacter>();
+                if (!Displayed)
+                {
+                    Displayed = true;
+                    CreateCommandMenu(character);
+                }
+                else
+                {
+                    Displayed = false;
+                    CloseCharacterMenu();
 
+                }
+            }
         }
 
 
@@ -101,7 +118,18 @@ namespace Dreamers.InventorySystem.UISystem
             SimpleSpellModal spellModal = Instantiate(Manager.MagicSkillWindow, getCanvas.transform).GetComponent<SimpleSpellModal>();
             List<BaseAbility> inInventory = new List<BaseAbility>();
 
-            spellModal.DisplaySpellsSkills(character, Inventory);
+            spellModal.DisplaySpellsSkills(character, SkillInventory);
+
+        }
+        void CreateCommandMenu(BaseCharacter baseCharacter)
+        {
+            if (Manager == null)
+            {
+                Manager = UIManager.instance;
+            }
+            CommandMenuModal spellModal = Instantiate(Manager.CommandMenuWindow, baseUI.transform).GetComponent<CommandMenuModal>();
+
+            spellModal.DisplayCommandMenu( SkillInventory, baseCharacter);
 
         }
 

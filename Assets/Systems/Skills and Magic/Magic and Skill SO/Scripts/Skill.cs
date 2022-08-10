@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 using Unity.Mathematics;
 using Stats;
 
+
 namespace SkillMagicSystem
 {
     [CreateAssetMenu(fileName = "Skill", menuName ="Magic and Skills/Skills")]
@@ -19,6 +20,7 @@ namespace SkillMagicSystem
 
         public List<BaseEffect> Effects;
 
+
         public void AddModStat() { }
         public void RemoveModStat() { }
 
@@ -29,6 +31,8 @@ namespace SkillMagicSystem
                 effect.Activate(baseCharacter, Amount, chance);
             }
         }
+        public void Equip(BaseCharacter baseCharacter) { }
+        public void Unequip(BaseCharacter baseCharacter) { }
 
         public int2 GridSize;
         public Shape GridShape;

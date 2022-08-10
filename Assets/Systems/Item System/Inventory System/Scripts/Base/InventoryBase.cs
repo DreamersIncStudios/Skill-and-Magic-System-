@@ -4,13 +4,13 @@ using Dreamers.InventorySystem.Interfaces;
 using Dreamers.InventorySystem.SO;
 using SkillMagicSystem;
 
-namespace Dreamers.InventorySystem.Base {
+namespace Dreamers.InventorySystem.Base
+{
     [System.Serializable]
     public class InventoryBase
     {
         public List<ItemSlot> ItemsInInventory;
-        public List<Magic> Magics;
-        public List<Skill> Skills;
+
         public uint MaxInventorySize;
         public bool OverBurdened => ItemsInInventory.Count >= MaxInventorySize;
         public InventoryBase(uint size) 

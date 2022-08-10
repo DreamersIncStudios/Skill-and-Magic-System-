@@ -60,12 +60,13 @@ namespace Dreamers.Global
         private GameObject ButtonPrefab;
         private GameObject SliderPrefab;
         #region Modal Windows
-
+        [Header("Modal Windows")]
         public GameObject ModalMenuPrefab;
         public GameObject ModalWindowPrefab;
         public GameObject ModalSelecetionPrefab;
         public GameObject StatsWindow;
         public GameObject MagicSkillWindow;
+        public GameObject CommandMenuWindow; 
         public GameObject InventoryWindow;
         public GameObject optionsWindow;
 
