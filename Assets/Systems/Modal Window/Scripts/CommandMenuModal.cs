@@ -18,10 +18,11 @@ public class CommandMenuModal : MonoBehaviour
             if (ability.Trigger == TriggerTypes.OnCommand || ability.Trigger == TriggerTypes.OnTimer) 
             {
                 Button item = Instantiate(ItemButton, ContentArea.transform);
-                item.GetComponent<TextMeshProUGUI>().text = ability.Name;
+                item.GetComponentInChildren<TextMeshProUGUI>().text = ability.Name;
                 item.onClick.AddListener(() =>
                 {
-                        ability.Activate(baseCharacter);
+
+                    ability.Activate(baseCharacter);
                  
                 });
             }

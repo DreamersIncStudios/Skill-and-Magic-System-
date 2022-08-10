@@ -30,7 +30,7 @@ namespace SkillMagicSystem
         public Dir dir;
 
 
-        public void Activate(BaseCharacter baseCharacter) {
+        public override void Activate(BaseCharacter baseCharacter) {
             foreach (BaseEffect effect in Effects) { 
              effect.Activate(baseCharacter,Amount,chance);
             }

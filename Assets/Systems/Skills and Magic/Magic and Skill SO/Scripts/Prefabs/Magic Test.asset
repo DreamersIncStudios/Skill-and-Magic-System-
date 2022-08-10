@@ -17,9 +17,8 @@ MonoBehaviour:
   level: 0
   reqdLevel: 0
   Magic: 1
-  effects:
-  - {fileID: 11400000, guid: 5b59fb120e7375042a6652589cb0454d, type: 2}
-  TestingEffects:
+  Trigger: 0
+  Effects:
   - {fileID: 11400000, guid: 88ecef381ac8db44ab6ff3edfff19d82, type: 2}
   GridSize:
     x: 0
