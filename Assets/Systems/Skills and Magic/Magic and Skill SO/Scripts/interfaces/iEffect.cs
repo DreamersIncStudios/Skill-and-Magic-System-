@@ -25,6 +25,7 @@ namespace SkillMagicSystem.AbilityEffects
          bool ActivateOnChance(int chance);
     }
     public interface IOnCommand { 
+        public float Delay { get; }
         public void OnCommand(BaseCharacter baseCharacter, int Amount);
     }
     public interface IOnEequip { 
@@ -45,7 +46,7 @@ namespace SkillMagicSystem.AbilityEffects
         bool ActivateOnChance(int chance);
     }
 
-    public enum Targets { Self, TeamMember, Target, AOE, Direction }
+    public enum Targets { Self, TeamMember, Target, AOE, Projectile }
 
 }
 

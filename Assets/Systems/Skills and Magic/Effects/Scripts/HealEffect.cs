@@ -7,20 +7,6 @@ using UnityEngine.VFX;
 
 namespace SkillMagicSystem.AbilityEffects
 {
-    public abstract class BaseEffect : ScriptableObject, iEffect {
-        public TriggerTypes GetTrigger { get { return trigger; } }
-        [SerializeField] TriggerTypes trigger;
-        public Targets GetTarget { get { return target; } }
-        [SerializeField] Targets target;
-        public float Duration { get { return duration; } }
-        [SerializeField] float duration = 3;
-        public GameObject EffectVFX { get { return effectVFX; } }
-        [SerializeField] GameObject effectVFX;
-        public virtual void Activate(BaseCharacter baseCharacter, int amount =0 , int chance=100) { }
-    }
-
-
-
     [CreateAssetMenu(fileName = "Healing Effect", menuName = "Magic and Skills/Heal Effect")]
 
     public class HealEffect : BaseEffect, IOnHitEffect, IOnKillEffect, IOnCommand, IOnTimeEffect, IOnPlayerDeath
@@ -28,6 +14,8 @@ namespace SkillMagicSystem.AbilityEffects
 
         [SerializeField] float range;
         [SerializeField] float intervalTime;
+        public float Delay { get { return delay; } }
+        [SerializeField] float delay;
 
         public override void Activate(BaseCharacter baseCharacter,int amount = 0, int chance =100) {
             base.Activate(baseCharacter,amount,chance);

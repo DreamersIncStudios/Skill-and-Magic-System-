@@ -23,6 +23,7 @@ namespace Stats
         private Elemental[] _ElementalMods;
         public bool InPlay;
         public bool InvincibleMode;
+        public AlteredStatus AlteredStatus { get; private set; }
         public bool Alive
         {
             get
@@ -258,7 +259,7 @@ namespace Stats
             StatUpdate();
         }
 
-
+        public bool SetAlteredStatus(AlteredStatus statusToChangeTo) { return false; } //Todo make a bool 
 
         public abstract void TakeDamage(int Amount, TypeOfDamage typeOf, Element element);
         public abstract void ReactToHit(float impact, Vector3 Test, Vector3 Forward, TypeOfDamage typeOf = TypeOfDamage.Melee, Element element = Element.None);
