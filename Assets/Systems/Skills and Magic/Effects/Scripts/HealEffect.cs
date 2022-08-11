@@ -43,7 +43,7 @@ namespace SkillMagicSystem.AbilityEffects
 
         public void OnHit(BaseCharacter baseCharacter, int amount, int chance)
         {
-            if (ActivateOnChance(chance)){
+            if ( ActivateOnChance(chance)){
                Heal(baseCharacter,amount);
             }
         }
@@ -83,11 +83,7 @@ namespace SkillMagicSystem.AbilityEffects
             }
         }
 
-        public bool ActivateOnChance( int chance) {
-            int rndNum = Random.Range(0, 100);
-            return chance >= rndNum;
-          
-        }
+        
 
         void Heal(BaseCharacter baseCharacter, int Amount) {
             switch (GetTarget)

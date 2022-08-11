@@ -37,7 +37,7 @@ namespace Dreamers.Global
 
         }
     }
-    public class Destoy : ComponentSystem
+    public class DestroySpawns : ComponentSystem
     {
         protected override void OnUpdate()
         {

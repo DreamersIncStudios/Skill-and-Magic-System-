@@ -122,11 +122,6 @@ namespace SkillMagicSystem.AbilityEffects
 
         }
 
-        public bool ActivateOnChance(int chance)
-        {
-            int rndNum = Random.Range(0, 100);
-            return chance >= rndNum;
-        }
         public bool StatusChange() {
             int rndNum = Random.Range(0, 100);
             return ChanceForStatusChange >= rndNum;

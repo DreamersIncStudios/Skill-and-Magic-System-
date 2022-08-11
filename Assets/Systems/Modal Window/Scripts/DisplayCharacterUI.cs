@@ -16,7 +16,7 @@ namespace Dreamers.InventorySystem.UISystem
         [SerializeField] GameObject baseUI;
         bool OpenCloseMenu => Input.GetKeyUp(KeyCode.I) || Input.GetKeyUp(KeyCode.JoystickButton7);
         bool OpenCloseMagic => Input.GetKeyUp(KeyCode.P) || Input.GetKeyUp(KeyCode.JoystickButton9);
-        bool Command => Input.GetKeyUp(KeyCode.M) || Input.GetKeyUp(KeyCode.JoystickButton9);
+        bool Command => Input.GetKey(KeyCode.M) || Input.GetKey(KeyCode.JoystickButton4);
 
         [SerializeField] Canvas getCanvas;
         public bool Displayed { get; private set; }
@@ -31,10 +31,11 @@ namespace Dreamers.InventorySystem.UISystem
         // Update is called once per frame
         void Update()
         {
+            if (!character)
+                character = FindObjectOfType<PlayerCharacter>();
             if (OpenCloseMenu)
             {
-                if (!character)
-                    character = FindObjectOfType<PlayerCharacter>();
+           
                 if (!Displayed)
                 {
                     OpenCharacterMenu(Inventory);
@@ -47,57 +48,42 @@ namespace Dreamers.InventorySystem.UISystem
 
                 }
             }
-            if (OpenCloseMagic)
-            {
-                if (!character)
-                    character = FindObjectOfType<PlayerCharacter>();
-                if (!Displayed)
-                {
-                    Displayed = true;
-                    CreateSkillMagic();
-                    baseUI.SetActive(false); //TODO add fade out 
-                }
-                else
-                {
-                    Displayed = false;
-                    CloseCharacterMenu();
-                    baseUI.SetActive(true);//TODO add fade In
 
-                }
-            }
             if (Command)
             {
-                if (!character)
-                    character = FindObjectOfType<PlayerCharacter>();
                 if (!Displayed)
                 {
                     Displayed = true;
                     CreateCommandMenu(character);
                 }
-                else
+            }
+            else
+            {
+                if (Displayed && spellModal!=null)
                 {
                     Displayed = false;
-                    CloseCharacterMenu();
-
+                    Destroy(spellModal.gameObject);
                 }
             }
         }
 
 
-
-        public void CloseCharacterMenu()
-        {
+        public void Clear() {
             foreach (Transform child in getCanvas.transform)
             {
                 Destroy(child.gameObject);
             }
 
+        }
+        public void CloseCharacterMenu()
+        {
+           Clear();
             Displayed = false;
         }
 
        [SerializeField] BaseCharacter character;
 
-        void CreateMenu()
+       public  void CreateMenu()
         {
             Manager = UIManager.instance;
             CreateSideMenu();
@@ -113,21 +99,24 @@ namespace Dreamers.InventorySystem.UISystem
             Displayed = true;
         }
 
-        void CreateSkillMagic() { 
-            Manager = UIManager.instance;
-            SimpleSpellModal spellModal = Instantiate(Manager.MagicSkillWindow, getCanvas.transform).GetComponent<SimpleSpellModal>();
-            List<BaseAbility> inInventory = new List<BaseAbility>();
+       public void CreateSkillMagic() { 
+            if(Manager==null)
+                Manager = UIManager.instance;
+          Clear();
+            CreateSideMenu();
 
+            SimpleSpellModal spellModal = Instantiate(Manager.MagicSkillWindow, getCanvas.transform).GetComponent<SimpleSpellModal>();
             spellModal.DisplaySpellsSkills(character, SkillInventory);
 
         }
+        CommandMenuModal spellModal;
         void CreateCommandMenu(BaseCharacter baseCharacter)
         {
             if (Manager == null)
             {
                 Manager = UIManager.instance;
             }
-            CommandMenuModal spellModal = Instantiate(Manager.CommandMenuWindow, baseUI.transform).GetComponent<CommandMenuModal>();
+            spellModal = Instantiate(Manager.CommandMenuWindow, baseUI.transform).GetComponent<CommandMenuModal>();
 
             spellModal.DisplayCommandMenu( SkillInventory, baseCharacter);
 

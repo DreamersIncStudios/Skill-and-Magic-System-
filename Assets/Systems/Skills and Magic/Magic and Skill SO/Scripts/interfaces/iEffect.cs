@@ -13,16 +13,17 @@ namespace SkillMagicSystem.AbilityEffects
         public GameObject EffectVFX { get; }
         public float Duration { get; }
         public void Activate(BaseCharacter baseCharacter, int amount, int chance);
-
+        public bool ActivateOnChance(int chance);
+      
     }
     public interface IOnHitEffect { 
         public void OnHit(BaseCharacter baseCharacter, int amount, int chance);
-        bool ActivateOnChance(int chance);
+ 
     }
     public interface IOnKillEffect
     {
         public void OnKill(BaseCharacter baseCharacter, int amount, int chance);
-         bool ActivateOnChance(int chance);
+ 
     }
     public interface IOnCommand { 
         public float Delay { get; }
@@ -33,19 +34,31 @@ namespace SkillMagicSystem.AbilityEffects
     }
     public interface IOnPlayerDeath { 
         public void OnPlayerDeath(BaseCharacter baseCharacter,int amount, int chance);
-        bool ActivateOnChance(int chance);
+   
     }
 
     public interface IOnTimeEffect {
         public void OnTimer(BaseCharacter baseCharacter , int amount, float interval);
         public void CancelTimer();
-         bool ActivateOnChance(int chance);
+     
     }
     public interface IOnGetHit { 
         public void OnGetHit(BaseCharacter baseCharacter);
-        bool ActivateOnChance(int chance);
+  
     }
-
+    public interface IOnCommandHit
+    {
+        public float Delay { get; }
+        public void OnCommandHit(BaseCharacter baseCharacter, int Amount);
+    
+    }
+    public interface IOnCommandTimer
+    {
+        public float Duration { get; }
+        public void OnCommandAddTimer(BaseCharacter baseCharacter, int Amount);
+        public void CancelTimerCommand();
+   
+    }
     public enum Targets { Self, TeamMember, Target, AOE, Projectile }
 
 }

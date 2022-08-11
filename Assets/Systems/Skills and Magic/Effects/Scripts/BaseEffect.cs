@@ -13,5 +13,13 @@ namespace SkillMagicSystem.AbilityEffects
         public GameObject EffectVFX { get { return effectVFX; } }
         [SerializeField] GameObject effectVFX;
         public virtual void Activate(BaseCharacter baseCharacter, int amount =0 , int chance=100) { }
+
+        public bool ActivateOnChance(int chance)
+        {
+
+            int rndNum = Random.Range(0, 100);
+            return chance >= rndNum;
+
+        }
     }
 }

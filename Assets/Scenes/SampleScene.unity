@@ -525,6 +525,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &861737337 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633430017}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe11e4f5f0481294a937b4296668d15c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1425590489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -871,6 +883,216 @@ PrefabInstance:
       propertyPath: getCanvas
       value: 
       objectReference: {fileID: 1425590491}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].text
+      value: Items
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[1].text
+      value: Spells and Skills
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].text
+      value: Options
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].text
+      value: 'Quit Game '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[1].actionToTake.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 861737337}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 861737337}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[1].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 861737337}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 861737337}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Clear
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CreateMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[1].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CreateSkillMagic
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenOptions
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FadeOut
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CloseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Dreamers.InventorySystem.UISystem.DisplayCharacterUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: Dreamers.InventorySystem.UISystem.DisplayCharacterUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[1].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Dreamers.InventorySystem.UISystem.DisplayCharacterUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Dreamers.InventorySystem.UISystem.DisplayCharacterUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelChanger, GameMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LevelChanger, GameMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: LevelChanger, GameMenus
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[0].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[2].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4876162283798434579, guid: 47950da0b93396d429152f3218e11102,
+        type: 3}
+      propertyPath: menuItems.Array.data[3].actionToTake.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4876162283798434588, guid: 47950da0b93396d429152f3218e11102,
         type: 3}
       propertyPath: MagicSkillWindow
