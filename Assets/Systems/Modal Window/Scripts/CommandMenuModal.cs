@@ -21,8 +21,8 @@ public class CommandMenuModal : MonoBehaviour
                 item.GetComponentInChildren<TextMeshProUGUI>().text = ability.Name;
                 item.onClick.AddListener(() =>
                 {
-
-                    ability.Activate(baseCharacter);
+                    Debug.Log($"Open Targeting System for {ability.Name}");
+                    //ability.Activate(baseCharacter);
                  
                 });
             }

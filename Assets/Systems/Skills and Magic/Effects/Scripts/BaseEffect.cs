@@ -12,8 +12,8 @@ namespace SkillMagicSystem.AbilityEffects
         [SerializeField] float duration = 3;
         public GameObject EffectVFX { get { return effectVFX; } }
         [SerializeField] GameObject effectVFX;
-        public virtual void Activate(BaseCharacter baseCharacter, int amount =0 , int chance=100) { }
-
+        public virtual void Activate(BaseCharacter Target, int amount =0 , int chance=100) { }
+        public virtual void Deavctivate(BaseCharacter Target, int amount=0) { }
         public bool ActivateOnChance(int chance)
         {
 

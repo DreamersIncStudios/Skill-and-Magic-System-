@@ -17,57 +17,57 @@ namespace SkillMagicSystem.AbilityEffects
         public float Delay { get { return delay; } }
         [SerializeField] float delay;
 
-        public override void Activate(BaseCharacter baseCharacter,int amount = 0, int chance =100) {
-            base.Activate(baseCharacter,amount,chance);
+        public override void Activate(BaseCharacter Targart,int amount = 0, int chance =100) {
+            base.Activate(Targart,amount,chance);
             Debug.Log("Called at SO");
             switch (GetTrigger) {
                 case TriggerTypes.OnCommand:
-                    OnCommand(baseCharacter,amount);
+                    OnCommand(Targart,amount);
                     break;
                 case TriggerTypes.OnHit:
-                    OnHit(baseCharacter, amount, chance);
+                    OnHit(Targart, amount, chance);
                     break;
                 case TriggerTypes.OnKill:
-                    OnKill(baseCharacter,amount,chance);
+                    OnKill(Targart,amount,chance);
                     break;
                 case TriggerTypes.OnTimer:
-                    OnTimer(baseCharacter, amount, intervalTime);
+                    OnTimer(Targart, amount, intervalTime);
                     break;
                 case TriggerTypes.OnPlayerDeath:
-                    OnPlayerDeath(baseCharacter,amount,chance);
+                    OnPlayerDeath(Targart,amount,chance);
                     break;
 
             }
         
         }
 
-        public void OnHit(BaseCharacter baseCharacter, int amount, int chance)
+        public void OnHit(BaseCharacter Target, int amount, int chance)
         {
             if ( ActivateOnChance(chance)){
-               Heal(baseCharacter,amount);
+               Heal(Target,amount);
             }
         }
 
-        public void OnKill(BaseCharacter baseCharacter, int amount, int chance)
+        public void OnKill(BaseCharacter Target, int amount, int chance)
         {
             if (ActivateOnChance(chance))
             {
-                Heal(baseCharacter, amount);
+                Heal(Target, amount);
 
             }
         }
 
-        public void OnCommand(BaseCharacter baseCharacter, int Amount)
+        public void OnCommand(BaseCharacter Target, int Amount)
         {
-            Heal(baseCharacter, Amount);
+            Heal(Target, Amount);
 
         }
         FunctionTimer intervalTimer;
-        public void OnTimer(BaseCharacter baseCharacter, int amount, float interval)
+        public void OnTimer(BaseCharacter Target, int amount, float interval)
         {
             intervalTimer = FunctionTimer.Create(() =>
             {
-                Heal(baseCharacter, amount); 
+                Heal(Target, amount); 
                 
             }
                 , interval, "Heal",true);
@@ -75,37 +75,37 @@ namespace SkillMagicSystem.AbilityEffects
         public void CancelTimer() {
             FunctionTimer.StopTimer("Heal");
         }
-        public void OnPlayerDeath(BaseCharacter baseCharacter, int amount, int chance)
+        public void OnPlayerDeath(BaseCharacter Target, int amount, int chance)
         {
             if (ActivateOnChance(chance))
             {
-                Heal(baseCharacter, amount);
+                Heal(Target, amount);
             }
         }
 
         
 
-        void Heal(BaseCharacter baseCharacter, int Amount) {
+        void Heal(BaseCharacter Target, int Amount) {
             switch (GetTarget)
             {
                 case Targets.Self:
                 case Targets.Target:
                 case Targets.TeamMember:
 
-                    baseCharacter.TakeDamage(Amount, TypeOfDamage.Recovery, Element.Holy);
+                    Target.TakeDamage(Amount, TypeOfDamage.Recovery, Element.Holy);
 
                     if (EffectVFX != null)
                     {
                         //Todo add position offset for VFX
-                        var spawned = Instantiate(EffectVFX, baseCharacter.transform.position, Quaternion.identity).GetComponent<VisualEffect>(); // figure out how to postion 
-                        spawned.transform.SetParent(baseCharacter.transform, false);
+                        var spawned = Instantiate(EffectVFX, Target.transform.position, Quaternion.identity).GetComponent<VisualEffect>(); // figure out how to postion 
+                        spawned.transform.SetParent(Target.transform, false);
                         spawned.Play();
                         Destroy(spawned.gameObject, Duration);
                     }
                  
                     break;
                 case Targets.AOE:
-                    var Cols = Physics.OverlapSphere(baseCharacter.gameObject.transform.position, range);
+                    var Cols = Physics.OverlapSphere(Target.gameObject.transform.position, range);
                     foreach (Collider coll in Cols)
                     {
                         if (coll.GetComponent<BaseCharacter>())

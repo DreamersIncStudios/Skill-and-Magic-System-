@@ -59,7 +59,9 @@ namespace Stats
 
         public Entity SelfEntityRef { get; private set; }
 
-
+        public void AdjustMana(int mod) { 
+            
+        }
 
         public void Awake()
         {

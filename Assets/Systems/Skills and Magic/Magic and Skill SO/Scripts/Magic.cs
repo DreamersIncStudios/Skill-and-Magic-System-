@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SkillMagicSystem.AbilityEffects;
-using Random = UnityEngine.Random;
 using Unity.Mathematics;
 using Stats;
 
@@ -30,14 +29,36 @@ namespace SkillMagicSystem
         public Dir dir;
 
 
-        public override void Activate(BaseCharacter baseCharacter) {
-            foreach (BaseEffect effect in Effects) { 
-             effect.Activate(baseCharacter,Amount,chance);
+        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter) {
+            if (CanCast(User))
+            {
+                User.AdjustMana(- ManaRqd);
+                foreach (BaseEffect effect in Effects)
+                {
+                    effect.Activate(targetCharacter, Amount, chance);
+                }
             }
         }
-        public void Equip(BaseCharacter baseCharacter) { }
-        public void Unequip(BaseCharacter baseCharacter) { }
-        public void AddToGrid() {  //Todo Add Later
+        public override void Deactivate(BaseCharacter targetCharacter) { }
+        public override void Equip(BaseCharacter targetCharacter) {
+            if (Trigger != TriggerTypes.OnGetHit)
+                return;
+            foreach (BaseEffect effect in Effects)
+            {
+                effect.Activate(targetCharacter, Amount, chance);
+            }
+        }
+        public override void Unequip(BaseCharacter targetCharacter) {
+            if (Trigger != TriggerTypes.OnGetHit)
+                return;
+
+            foreach (BaseEffect effect in Effects)
+            {
+                effect.Activate(targetCharacter, Amount, chance);
+            }
+        }
+
+        public  void AddToGrid() {  //Todo Add Later
         
         }
         public void RemoveFromGrid() { }

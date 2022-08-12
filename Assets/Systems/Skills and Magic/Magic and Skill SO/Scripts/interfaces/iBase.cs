@@ -11,9 +11,13 @@ namespace SkillMagicSystem
         string Description { get; }
         public Level Level { get; }
         public int ReqdLevel { get; }
+        public int ManaRqd { get; }
         public bool CanAdd(int level); //Todo Add more check besides level 
-        public  void Activate(BaseCharacter baseCharacter);
-
+        public bool CanCast(BaseCharacter User);
+        public  void Activate(BaseCharacter User, BaseCharacter targetCharacter);
+        public void Deactivate(BaseCharacter targetCharacter);
+        public void Equip(BaseCharacter targetCharacter);
+        public void Unequip(BaseCharacter targetCharacter);
 
 
     }
@@ -37,11 +41,22 @@ namespace SkillMagicSystem
         [SerializeField] int reqdLevel;
         public bool Magic;
         public TriggerTypes Trigger;
-        public bool CanAdd(int characterlevel) {
-            return ReqdLevel <= characterlevel; 
-                
-                }
-        public virtual void Activate(BaseCharacter baseCharacter) { }
+        public bool CanAdd(int characterlevel)
+        {
+            return ReqdLevel <= characterlevel;
+        }
+        public int ManaRqd { get { return manaRqd; } }
+        [SerializeField] int manaRqd;
+        public bool CanCast(BaseCharacter User) {
+            return User.CurMana > ManaRqd;
+            
+        }       
+
+
+        public virtual void Activate(BaseCharacter User, BaseCharacter targetCharacter) { }
+        public virtual void Deactivate(BaseCharacter targetCharacter) { }
+        public virtual void Equip(BaseCharacter targetCharacter) { }
+        public virtual void Unequip(BaseCharacter targetCharacter) { }
     }
 
 

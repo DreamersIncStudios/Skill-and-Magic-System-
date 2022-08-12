@@ -2,9 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using SkillMagicSystem.AbilityEffects;
-using Random = UnityEngine.Random;
 using Unity.Mathematics;
 using Stats;
 
@@ -21,31 +19,34 @@ namespace SkillMagicSystem
         public List<BaseEffect> Effects;
 
 
-        public void AddModStat() { }
-        public void RemoveModStat() { }
-
-        public void Activate(BaseCharacter baseCharacter)
+        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter)
         {
-            foreach (BaseEffect effect in Effects)
+            if (CanCast(User))
             {
-                effect.Activate(baseCharacter, Amount, chance);
+                foreach (BaseEffect effect in Effects)
+                {
+                    effect.Activate(targetCharacter, Amount, chance);
+                }
             }
         }
-        public void Equip(BaseCharacter baseCharacter) { }
-        public void Unequip(BaseCharacter baseCharacter) { }
+        public override void Deactivate(BaseCharacter targetCharacter) { }
+        public override void Equip(BaseCharacter baseCharacter) { }
+        public override void Unequip(BaseCharacter baseCharacter) { }
+        public void AddToGrid()
+        {  //Todo Add Later
+
+        }
+        public void RemoveFromGrid() { }
+        public void DisplayUI() { }
+        public void WriteToTextFile()
+        {
+            throw new System.NotImplementedException();
+        }
 
         public int2 GridSize;
         public Shape GridShape;
         public Color MapColor { get; private set; }
         public bool Rotatable { get; private set; }
         public Dir dir;
-
-
-       
-        
-        public void WriteToTextFile()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }
