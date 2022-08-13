@@ -65,7 +65,8 @@ namespace Stats
 
         public void Awake()
         {
-            _name = string.Empty;
+            //_name = string.Empty;
+            _name= gameObject.name;
             _level = 0;
             _freeExp = 0;
             _primaryAttribute = new Attributes[Enum.GetValues(typeof(AttributeName)).Length];

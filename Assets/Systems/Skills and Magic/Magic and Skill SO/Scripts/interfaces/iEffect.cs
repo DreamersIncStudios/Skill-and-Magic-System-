@@ -13,7 +13,7 @@ namespace SkillMagicSystem.AbilityEffects
         public GameObject EffectVFX { get; }
         public float Duration { get; }
         public void Activate(BaseCharacter baseCharacter, int amount, int chance);
-        public void Deavctivate(BaseCharacter Target, int amount);
+        public void Deactivate(BaseCharacter Target, int amount);
         public bool ActivateOnChance(int chance);
       
     }
@@ -61,8 +61,6 @@ namespace SkillMagicSystem.AbilityEffects
         public void CancelTimerCommand();
    
     }
-    public enum Targets { Self, TeamMember, Target, AOE, Projectile }
-    public enum TriggerTypes { OnCommand, OnHit, OnGetHit, OnKill, OnPlayerDeath, OnTimer, OnEquip, OnCommandTimer, OnCommandOnHit }
 
 }
 

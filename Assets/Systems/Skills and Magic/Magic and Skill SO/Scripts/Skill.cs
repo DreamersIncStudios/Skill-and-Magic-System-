@@ -16,8 +16,6 @@ namespace SkillMagicSystem
         public int chance { get; private set; }
         public int Amount { get; private set; }
 
-        public List<BaseEffect> Effects;
-
 
         public override void Activate(BaseCharacter User, BaseCharacter targetCharacter)
         {
@@ -29,7 +27,7 @@ namespace SkillMagicSystem
                 }
             }
         }
-        public override void Deactivate(BaseCharacter targetCharacter) { }
+        public override void Deactivate(BaseCharacter User, BaseCharacter targetCharacter) { }
         public override void Equip(BaseCharacter baseCharacter) { }
         public override void Unequip(BaseCharacter baseCharacter) { }
         public void AddToGrid()

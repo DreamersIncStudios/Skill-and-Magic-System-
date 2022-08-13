@@ -92,7 +92,7 @@ namespace SkillMagicSystem.AbilityEffects
             switch (GetTarget)
             {
                 case Targets.Self:
-                case Targets.Target:
+                case Targets.Enemy:
                 case Targets.TeamMember:
 
                     baseCharacter.TakeDamage(Amount, TypeOfDamage.Magic, GetElement);

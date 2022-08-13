@@ -17,7 +17,10 @@ MonoBehaviour:
   level: 0
   reqdLevel: 0
   Magic: 0
-  effects: []
+  Trigger: 0
+  Effects: []
+  abilityTarget: 2
+  manaRqd: 0
   GridSize:
     x: 0
     y: 0

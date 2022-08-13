@@ -12,12 +12,9 @@ namespace SkillMagicSystem
     [CreateAssetMenu(fileName = "Magic", menuName = "Magic and Skills/Magic")]
     public class Magic : BaseAbility
     {
-        
+
         public int chance { get; private set; }
         public int Amount { get; private set; }
-
-        public List<BaseEffect> Effects;
-
 
         public void AddModStat() { }
         public void RemoveModStat() { }
@@ -29,37 +26,56 @@ namespace SkillMagicSystem
         public Dir dir;
 
 
-        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter) {
+        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter = null)
+        {
+            if (targetCharacter = null)
+                targetCharacter = User;
             if (CanCast(User))
             {
-                User.AdjustMana(- ManaRqd);
+                User.AdjustMana(-ManaRqd);// Todo Need to create Mana Hold
                 foreach (BaseEffect effect in Effects)
                 {
                     effect.Activate(targetCharacter, Amount, chance);
                 }
             }
         }
-        public override void Deactivate(BaseCharacter targetCharacter) { }
-        public override void Equip(BaseCharacter targetCharacter) {
-            if (Trigger != TriggerTypes.OnGetHit)
+
+        public override void Deactivate(BaseCharacter User, BaseCharacter targetCharacter = null)
+        {
+            if (targetCharacter = null)
+                targetCharacter = User;
+
+            User.AdjustMana(ManaRqd);// Need to create Mana Hold
+            foreach (BaseEffect effect in Effects)
+            {
+                effect.Deactivate(targetCharacter);
+            }
+        }
+        public override void Equip(BaseCharacter targetCharacter)
+        {
+            if (Trigger != TriggerTypes.OnEquip)
                 return;
             foreach (BaseEffect effect in Effects)
             {
-                effect.Activate(targetCharacter, Amount, chance);
+                if (effect.GetTrigger == TriggerTypes.OnEquip)
+                    effect.Activate(targetCharacter, Amount, chance);
             }
         }
-        public override void Unequip(BaseCharacter targetCharacter) {
-            if (Trigger != TriggerTypes.OnGetHit)
+        public override void Unequip(BaseCharacter targetCharacter)
+        {
+            if (Trigger != TriggerTypes.OnEquip)
                 return;
 
             foreach (BaseEffect effect in Effects)
             {
-                effect.Activate(targetCharacter, Amount, chance);
+                if (effect.GetTrigger == TriggerTypes.OnEquip)
+                    effect.Activate(targetCharacter, Amount, chance);
             }
         }
 
-        public  void AddToGrid() {  //Todo Add Later
-        
+        public void AddToGrid()
+        {  //Todo Add Later
+
         }
         public void RemoveFromGrid() { }
         public void DisplayUI() { }
