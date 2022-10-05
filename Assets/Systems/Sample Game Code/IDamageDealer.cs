@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Entities;
 using Stats;
+using System;
+
 namespace DreamersInc.DamageSystem.Interfaces
 {
-    public interface IDamageDealer 
+    public interface IDamageDealer
     {
         int BaseDamage { get; }
         float CriticalHitMod { get; }
@@ -14,10 +16,12 @@ namespace DreamersInc.DamageSystem.Interfaces
         Element Element { get; }
         TypeOfDamage TypeOfDamage { get; }
         BaseCharacter Stats { get; }
-        void SetElement( Element value);
+        void SetElement(Element value);
         void SetDamageType();
         int DamageAmount();
         bool DoDamage { get; }
         void SetDamageBool(bool value);
+        public Action OnHitAction { get; set; }
+        public Action ChanceCheck { get; set; }
     }
 }

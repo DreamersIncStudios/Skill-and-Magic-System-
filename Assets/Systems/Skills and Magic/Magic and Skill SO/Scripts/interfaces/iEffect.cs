@@ -17,14 +17,21 @@ namespace SkillMagicSystem.AbilityEffects
         public bool ActivateOnChance(int chance);
       
     }
-    public interface IOnHitEffect { 
-        public void OnHit(BaseCharacter Target, int amount, int chance);
+    public interface IOnHitEffect {
+
+        public bool DoHitAction { get;  }
+        public void OnHit(BaseCharacter Target, int amount);
+        public void OnChanceCheck();
  
     }
     public interface IOnKillEffect
     {
-        public void OnKill(BaseCharacter Target, int amount, int chance);
- 
+        public bool DoHitAction { get; }
+
+        public void OnKill(BaseCharacter Target, int amount);
+        public void OnChanceCheck();
+
+
     }
     public interface IOnCommand { 
         public float Delay { get; }
@@ -35,8 +42,10 @@ namespace SkillMagicSystem.AbilityEffects
         public void OnUnequip(BaseCharacter Target);
     }
     public interface IOnPlayerDeath { 
-        public void OnPlayerDeath(BaseCharacter Target,int amount, int chance);
-   
+        public void OnPlayerDeath(BaseCharacter Target,int amount);
+        public void OnChanceCheck();
+
+
     }
 
     public interface IOnTimeEffect {
@@ -44,15 +53,23 @@ namespace SkillMagicSystem.AbilityEffects
         public void CancelTimer();
      
     }
-    public interface IOnGetHit { 
+    public interface IOnGetHit {
+        public bool DoHitAction { get; }
+
         public void OnGetHit(BaseCharacter Target);
-  
+        public void OnChanceCheck();
+
+
     }
     public interface IOnCommandHit
     {
         public float Delay { get; }
+        public bool DoHitAction { get; }
+
         public void OnCommandHit(BaseCharacter Target, int Amount);
-    
+        public void OnChanceCheck();
+
+
     }
     public interface IOnCommandTimer
     {

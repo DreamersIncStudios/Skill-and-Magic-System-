@@ -11,7 +11,9 @@ namespace DreamersInc.DamageSystem
    // [RequireComponent(typeof(MeshCollider))]
     public class WeaponDamage : MonoBehaviour, IDamageDealer
     {
-        public Action OnHitAction;
+        public Action OnHitAction { get; set; }
+        public Action ChanceCheck { get; set; }
+
         public int BaseDamage
         {
             get
@@ -87,6 +89,10 @@ namespace DreamersInc.DamageSystem
             else {
                 throw new ArgumentNullException(nameof(gameObject),$"Collider has not been setup on equipped weapon. Please set up Collider in Editor; {gameObject.name}");
             }
+        }
+        public void CheckChance() 
+        { 
+            ChanceCheck.Invoke();
         }
 
         public void OnTriggerEnter(Collider other)

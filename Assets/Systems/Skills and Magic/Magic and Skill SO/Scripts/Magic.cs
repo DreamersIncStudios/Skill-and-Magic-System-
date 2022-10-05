@@ -28,8 +28,9 @@ namespace SkillMagicSystem
 
         public override void Activate(BaseCharacter User, BaseCharacter targetCharacter = null)
         {
-            if (targetCharacter = null)
+            if (targetCharacter == null)
                 targetCharacter = User;
+
             if (CanCast(User))
             {
                 User.AdjustMana(-ManaRqd);// Todo Need to create Mana Hold

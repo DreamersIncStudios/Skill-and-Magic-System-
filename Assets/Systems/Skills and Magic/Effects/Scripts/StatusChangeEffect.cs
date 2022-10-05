@@ -10,7 +10,12 @@ namespace SkillMagicSystem.AbilityEffects
 
         public float Delay { get { return delay; } }
         [SerializeField] float delay;
-
+        [SerializeField] int chance;
+        public bool DoHitAction { get; private set; }
+        public void OnChanceCheck()
+        {
+            DoHitAction = ActivateOnChance(chance);
+        }
 
         public void CancelTimer()
         {
@@ -30,7 +35,7 @@ namespace SkillMagicSystem.AbilityEffects
             throw new System.NotImplementedException();
         }
 
-        public void OnHit(BaseCharacter baseCharacter, int amount, int chance)
+        public void OnHit(BaseCharacter baseCharacter, int amount)
         {
             throw new System.NotImplementedException();
         }

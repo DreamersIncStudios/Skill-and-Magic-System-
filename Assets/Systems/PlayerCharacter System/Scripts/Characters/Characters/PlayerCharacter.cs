@@ -12,9 +12,15 @@ namespace Stats
         public override void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
             base.Convert(entity, dstManager, conversionSystem);
-            var data = new PlayerStatComponent() { MaxHealth = MaxHealth, MaxMana = MaxMana, CurHealth = CurHealth, CurMana = CurMana,
+            var data = new PlayerStatComponent()
+            {
+                MaxHealth = MaxHealth,
+                MaxMana = MaxMana,
+                CurHealth = CurHealth,
+                CurMana = CurMana,
                 selfEntityRef = entity
             };
+            conversionSystem.DeclareAssetDependency(gameObject, this);
             dstManager.AddComponentData(entity, data);
 
             StatUpdate();
@@ -27,11 +33,20 @@ namespace Stats
             {
                 TypeOfDamage.MagicAoE => MagicDef,
                 TypeOfDamage.Recovery => 1.0f,
+
                 _ => MeleeDef,
             };
-
-            int damageToProcess = -Mathf.FloorToInt(Amount * defense * Random.Range(.92f, 1.08f));
+            int damageToProcess = new int();
+            if (typeOf != TypeOfDamage.Recovery)
+            {
+                damageToProcess = -Mathf.FloorToInt(Amount * defense * Random.Range(.92f, 1.08f));
+            }
+            else
+            {
+                damageToProcess = Mathf.FloorToInt(Amount * defense);
+            }
             AdjustHealth health = new AdjustHealth() { Value = damageToProcess };
+
             World.DefaultGameObjectInjectionWorld.EntityManager.AddComponentData(SelfEntityRef, health);
 
         }

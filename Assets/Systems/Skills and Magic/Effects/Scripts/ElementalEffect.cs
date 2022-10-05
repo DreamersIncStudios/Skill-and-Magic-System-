@@ -19,12 +19,16 @@ namespace SkillMagicSystem.AbilityEffects
         [SerializeField] int chanceForStatusChange;
         [SerializeField] int durationOfStatusChange;
         [SerializeField] float range;
+        [SerializeField] int chance;
 
-        public void OnHit(BaseCharacter baseCharacter, int amount, int chance)
+        public bool DoHitAction { get; private set; }
+
+        public void OnHit(BaseCharacter baseCharacter, int amount)
         {
-            if (ActivateOnChance(chance))
+            if (DoHitAction)
             {
                 DoElementalDamage(baseCharacter, amount);
+                DoHitAction = false;
             }
             if (StatusChange())
             {
@@ -53,7 +57,10 @@ namespace SkillMagicSystem.AbilityEffects
                 }
             }
         }
-
+        public void OnChanceCheck()
+        {
+            DoHitAction = ActivateOnChance(chance);
+        }
 
         public void OnCommand(BaseCharacter baseCharacter, int Amount)
         {
