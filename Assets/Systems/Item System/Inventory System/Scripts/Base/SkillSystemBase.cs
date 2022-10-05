@@ -8,6 +8,8 @@ namespace Dreamers.InventorySystem.Base
         public List<Magic> MagicInventory;
         public List<Skill> SkillInventory;
 
-        public List<BaseAbility> EquipSkillMagic;
+        public List<Magic> EquippedMagic;
+        public List<Skill> EquippedSkill;
+
     }
 }

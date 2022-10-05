@@ -16,7 +16,7 @@ public class CommandMenuModal : MonoBehaviour
     public  Button ItemButton;
 
     public  void DisplayCommandMenu(SkillSystemBase skillSystemBase, BaseCharacter User) {
-        foreach (BaseAbility ability in skillSystemBase.EquipSkillMagic) {
+        foreach (BaseAbility ability in skillSystemBase.EquippedSkill) {
             if (ability.Trigger == TriggerTypes.OnCommand || ability.Trigger == TriggerTypes.OnTimer) 
             {
                 Button item = Instantiate(ItemButton, ContentArea.transform);
@@ -63,7 +63,7 @@ public class CommandMenuModal : MonoBehaviour
     }
 
     public void DisplayCommandMenu(BaseCharacter user) {
-        SkillSystemBase SkillInventory = user.GetComponent<CharacterInventory>().skillSystem;
+        SkillSystemBase SkillInventory = user.GetComponent<CharacterInventory>().magicSkillSystem;
         DisplayCommandMenu(SkillInventory, user);
 
     }

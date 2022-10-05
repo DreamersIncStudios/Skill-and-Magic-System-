@@ -21,7 +21,7 @@ namespace Dreamers.InventorySystem.UISystem
         [SerializeField] Canvas getCanvas;
         public bool Displayed { get; private set; }
         InventoryBase Inventory => character.GetComponent<CharacterInventory>().Inventory;
-        SkillSystemBase SkillInventory => character.GetComponent<CharacterInventory>().skillSystem;
+        SkillSystemBase SkillInventory => character.GetComponent<CharacterInventory>().magicSkillSystem;
         [SerializeField] List<MenuButtons> menuItems;
         private void Awake()
         {

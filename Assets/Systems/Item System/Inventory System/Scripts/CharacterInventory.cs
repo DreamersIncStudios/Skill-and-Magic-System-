@@ -14,7 +14,7 @@ namespace Dreamers.InventorySystem
         private Animator anim => this.GetComponent<Animator>();
         public InventoryBase Inventory;
         public EquipmentBase Equipment;
-        public SkillSystemBase skillSystem;
+        public SkillSystemBase magicSkillSystem;
         public MissionHub QuestLog;
         public Entity self { get; private set; }
         public int Gold { get; private set; }

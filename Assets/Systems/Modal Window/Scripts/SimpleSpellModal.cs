@@ -29,16 +29,25 @@ namespace SkillMagicSystem
             {
                 Destroy(child.gameObject);
             }
-            foreach (BaseAbility basic in Inventory.EquipSkillMagic)
+            foreach (Magic basic in Inventory.EquippedMagic)
             {
                 Button item = Instantiate(ItemButton, EquippedContentArea.transform);
                 item.GetComponentInChildren<TextMeshProUGUI>().text = basic.Name;
                 item.onClick.AddListener(() => {
                     Debug.Log($"Remove {basic.Name} to player ability list");
-                    Inventory.EquipSkillMagic.Remove(basic);
-                    if (basic.Magic)
-                        Inventory.MagicInventory.Add((Magic)basic);
-                    else
+                    Inventory.EquippedMagic.Remove(basic);
+                        Inventory.MagicInventory.Add(basic);
+                    Destroy(item.gameObject);
+                    RefreshInInventory(player, Inventory);
+                });
+            }
+            foreach (Skill basic in Inventory.EquippedSkill)
+            {
+                Button item = Instantiate(ItemButton, EquippedContentArea.transform);
+                item.GetComponentInChildren<TextMeshProUGUI>().text = basic.Name;
+                item.onClick.AddListener(() => {
+                    Debug.Log($"Remove {basic.Name} to player ability list");
+                    Inventory.EquippedSkill.Remove(basic);
                         Inventory.SkillInventory.Add((Skill)basic);
                     Destroy(item.gameObject);
                     RefreshInInventory(player, Inventory);
@@ -73,10 +82,16 @@ namespace SkillMagicSystem
                     {
                         Debug.Log($"Add {basic.Name} to player ability list");
                         if (basic.Magic)
+                        {
                             Inventory.MagicInventory.Remove((Magic)basic);
+                            Inventory.EquippedMagic.Add((Magic)basic);
+
+                        }
                         else
+                        {
                             Inventory.SkillInventory.Remove((Skill)basic);
-                        Inventory.EquipSkillMagic.Add(basic);
+                            Inventory.EquippedSkill.Add((Skill)basic);
+                        }
                         Destroy(item.gameObject);
                         RefreshEquipped(player, Inventory);
                     }
