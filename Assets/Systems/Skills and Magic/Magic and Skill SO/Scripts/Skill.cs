@@ -17,8 +17,11 @@ namespace SkillMagicSystem
         public int Amount { get; private set; }
 
 
-        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter)
+        public override void Activate(BaseCharacter User, BaseCharacter targetCharacter= null)
         {
+            if (targetCharacter == null)
+                targetCharacter = User;
+
             if (CanCast(User))
             {
                 foreach (BaseEffect effect in Effects)

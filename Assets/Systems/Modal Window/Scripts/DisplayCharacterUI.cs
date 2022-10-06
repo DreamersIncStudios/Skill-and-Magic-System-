@@ -49,22 +49,7 @@ namespace Dreamers.InventorySystem.UISystem
                 }
             }
 
-            if (Command)
-            {
-                if (!Displayed)
-                {
-                    Displayed = true;
-                    CreateCommandMenu(character);
-                }
-            }
-            else
-            {
-                if (Displayed && spellModal!=null)
-                {
-                    Displayed = false;
-                    Destroy(spellModal.gameObject);
-                }
-            }
+    
         }
 
 
@@ -107,18 +92,6 @@ namespace Dreamers.InventorySystem.UISystem
 
             SimpleSpellModal spellModal = Instantiate(Manager.MagicSkillWindow, getCanvas.transform).GetComponent<SimpleSpellModal>();
             spellModal.DisplaySpellsSkills(character, SkillInventory);
-
-        }
-        CommandMenuModal spellModal;
-        void CreateCommandMenu(BaseCharacter baseCharacter)
-        {
-            if (Manager == null)
-            {
-                Manager = UIManager.instance;
-            }
-            spellModal = Instantiate(Manager.CommandMenuWindow, baseUI.transform).GetComponent<CommandMenuModal>();
-
-            spellModal.DisplayCommandMenu( SkillInventory, baseCharacter);
 
         }
 
